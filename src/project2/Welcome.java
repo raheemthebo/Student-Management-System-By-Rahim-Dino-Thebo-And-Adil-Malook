@@ -26,7 +26,7 @@ public class Welcome extends JFrame implements ActionListener{
     JLabel lable=new JLabel("Student Managemnt System");
     lable.setBounds(140,10,1200,80);
     lable.setFont(new Font("serif",Font.PLAIN,75));
-    ImageIcon img1=new ImageIcon("E:\\Pic\\back.jpg");
+    ImageIcon img1=new ImageIcon("E:\\Pic\\Home.jpg");
     Image img2=img1.getImage().getScaledInstance(1100, 700, Image.SCALE_DEFAULT);
     ImageIcon img3=new ImageIcon(img2);
     JLabel image=new JLabel(img3);

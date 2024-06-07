@@ -1,15 +1,16 @@
 
 package project2;
 
-import com.toedter.calendar.JDateChooser;
+//import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
 public class AddStudent extends JFrame implements ActionListener{
-    JTextField tbname,tbfather,tbdob,tbsalary,tbaddress,tbphone,tbaemail,tbDesignation,tbcnic;
-    Random ran=new Random();
-    int number=ran.nextInt(9999);
+    JTextField tbname, tbfather, tbdob, tbsalary, tbaddress, tbphone, tbaemail, tbDesignation, tbcnic, tbstdid;
+    //Date dcdob;
+    //Random ran=new Random();
+    //int number=ran.nextInt(9999);
     JButton btnadd,btnback;
     JComboBox cmbedu;
     JLabel lblStudentId;
@@ -47,19 +48,19 @@ public class AddStudent extends JFrame implements ActionListener{
     tbfather.setBounds(500,160,170,30);
     add(tbfather);
     
-    JLabel DOB =new JLabel("Date of Birth");
-    DOB.setBounds(50,220,90,50);
-    DOB.setFont(new Font("SERIF",Font.BOLD,15));
-    DOB.setForeground(Color.WHITE);
-    add(DOB);
-   
-    JDateChooser dcdob = new JDateChooser(); 
-    dcdob.setBounds(150,220,170,30);
-    add(dcdob);
-    
-    //tbdob=new JTextField();
-    //tbdob.setBounds(150,220,170,30);
-    //add(tbdob);
+    JLabel dob =new JLabel("Date of Birth");
+    dob.setBounds(50,220,90,50);
+    dob.setFont(new Font("SERIF",Font.BOLD,15));
+    dob.setForeground(Color.WHITE);
+    add(dob);
+  
+	    //dcdob = new JDateChooser().getDate();
+	    //JDateChooser dcdobChooser = new JDateChooser();
+	    //dcdobChooser.setBounds(150,220,170,30);
+	    //add(dcdobChooser);
+	tbdob = new JTextField();
+    tbdob.setBounds(150,220,170,30);
+    add(tbdob);
     
     JLabel lblsalary=new JLabel("Salary");
     lblsalary.setBounds(380,210,80,50);
@@ -121,7 +122,7 @@ public class AddStudent extends JFrame implements ActionListener{
     add(lblDesignation);
     
     tbDesignation=new JTextField();
-    tbDesignation.setBounds(150,400,170,30);
+    tbDesignation.setBounds(180, 400,170,30);
     add(tbDesignation);
     
       JLabel lblNic=new JLabel("CNIC");
@@ -141,13 +142,16 @@ public class AddStudent extends JFrame implements ActionListener{
     lblStudentId.setForeground(Color.WHITE);
     add(lblStudentId);
     
+    tbstdid = new JTextField();
+    tbstdid.setBounds(180,460,170,30);
+	    add(tbstdid);
   
     
-    lblId =new JLabel(""+number);
-    lblId.setBounds(150,440,120,50);
-    lblId.setFont(new Font("SERIF",Font.PLAIN,20));
-    lblId.setForeground(Color.WHITE);
-    add(lblId);   
+   // lblId =new JLabel(""+number);
+    //lblId.setBounds(150,440,120,50);
+    //lblId.setFont(new Font("SERIF",Font.PLAIN,20));
+    //lblId.setForeground(Color.WHITE);
+    //add(lblId);   
     
     btnadd =new JButton("Add Record");
     btnadd.setBounds(200,550,150,40);
@@ -182,10 +186,10 @@ public class AddStudent extends JFrame implements ActionListener{
     String designation=tbDesignation.getText();
     String cnic=tbcnic.getText();
     String edu= (String) cmbedu.getSelectedItem();
-    String stdid=lblId.getText();
+    String stdid=tbstdid.getText();
     try{
     Conn n=new Conn();
-    String query="insert into Student values ('"+ name+"','"+father+"','"+dob+"','"+phone+"','"+ salary+"','"+address+"','"+email+"','"+designation+"','"+cnic+"','"+edu+"','"+stdid+"' )";
+    String query="insert into student values ('"+ name+"','"+father+"','"+dob+"','"+phone+"','"+ salary+"','"+address+"','"+email+"','"+designation+"','"+cnic+"','"+edu+"','"+stdid+"' );";
     int a=n.s.executeUpdate(query);
     if(a>0){
     JOptionPane.showMessageDialog(null, "Data Inserted");

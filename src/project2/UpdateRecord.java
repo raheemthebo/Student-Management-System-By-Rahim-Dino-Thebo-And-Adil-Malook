@@ -162,10 +162,10 @@ public class UpdateRecord extends JFrame implements ActionListener{
    
     try{
     Conn n=new Conn();
-    String query="select * from Student where emoid = '"+stdid+"'";
+    String query="select * from Student where stdid = '"+stdid+"'";
     ResultSet rs=n.s.executeQuery(query);
     while(rs.next()){
-    tbname.setText(rs.getString("Sname"));
+    tbname.setText(rs.getString("name"));
     tbfather.setText(rs.getString("father"));
     tbdob.setText(rs.getString("dob"));
     tbphone.setText(rs.getString("phone"));
@@ -203,7 +203,7 @@ public class UpdateRecord extends JFrame implements ActionListener{
 
     try{
     Conn n=new Conn();
-    String query="Update Student set Sname ='"+ name+"',father = '"+father+"', dob = '"+dob+"', phone ='"+phone+"', salary = '"+ salary+"', address= '"+address+"',email = '"+email+"',designation = '"+designation+"',cnic= '"+cnic+"',edu= '"+edu+"'  where emoid= '"+stdid+"'";
+    String query="Update student set name ='"+ name+"',father = '"+father+"', dob = '"+dob+"', phone ='"+phone+"', salary = '"+ salary+"', address= '"+address+"',email = '"+email+"',designation = '"+designation+"',cnic= '"+cnic+"',edu= '"+edu+"'  where stdid= '"+stdid+"'";
     int a=n.s.executeUpdate(query);
     if(a>0){
     JOptionPane.showMessageDialog(null, "Data Updated");

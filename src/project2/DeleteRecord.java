@@ -26,10 +26,10 @@ public class DeleteRecord extends JFrame implements ActionListener {
     
     try{
     Conn n=new Conn();
-    String query="select * from Student";
+    String query="select * from student";
     ResultSet rs=n.s.executeQuery(query);
     while(rs.next()){
-    cmbid.add(rs.getString("emoid"));
+    cmbid.add(rs.getString("stdid"));
     }
     }catch(Exception e){e.printStackTrace();}
     add(cmbid);
@@ -60,13 +60,13 @@ public class DeleteRecord extends JFrame implements ActionListener {
     tbphone.setEnabled(false);
     tbphone.setBounds(140,180,150,30);
     add(tbphone);
-    getContentPane().setBackground(Color.WHITE);
+    getContentPane().setBackground(Color.LIGHT_GRAY);
     try{
     Conn n=new Conn();
-    String query="select * from Student where emoid ='"+cmbid.getSelectedItem()+"'";
+    String query="select * from Student where stdid ='"+cmbid.getSelectedItem()+"'";
     ResultSet rs=n.s.executeQuery(query);
     while(rs.next()){
-    tbname.setText(rs.getString("Sname"));
+    tbname.setText(rs.getString("name"));
     tbfather.setText(rs.getString("father"));
     tbphone.setText(rs.getString("phone"));
     
@@ -78,10 +78,10 @@ public class DeleteRecord extends JFrame implements ActionListener {
     public void itemStateChanged(ItemEvent ie){
         try{
     Conn n=new Conn();
-    String query="select * from Student where emoid ='"+cmbid.getSelectedItem()+"'";
+    String query="select * from Student where stdid ='"+cmbid.getSelectedItem()+"'";
     ResultSet rs=n.s.executeQuery(query);
     while(rs.next()){
-    tbname.setText(rs.getString("Sname"));
+    tbname.setText(rs.getString("name"));
     tbfather.setText(rs.getString("father"));
     tbphone.setText(rs.getString("phone"));
     
@@ -119,7 +119,7 @@ public class DeleteRecord extends JFrame implements ActionListener {
             if(ae.getSource()==delete){
             try{
             Conn n=new Conn();
-            String query="delete from Student where emoid='"+cmbid.getSelectedItem()+"'";
+            String query="delete from Student where stdid='"+cmbid.getSelectedItem()+"'";
             n.s.executeUpdate(query);
             JOptionPane.showMessageDialog(null,"Record Deleted Successfully");
             setVisible(false);

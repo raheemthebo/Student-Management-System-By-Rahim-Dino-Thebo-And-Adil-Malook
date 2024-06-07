@@ -42,7 +42,7 @@ public class Login extends JFrame implements ActionListener{
         btnlogin.setForeground(Color.BLACK);
         btnlogin.addActionListener(this);
         ImageIcon img1=new ImageIcon("E:\\Pic\\Login.png");
-        Image img2=img1.getImage().getScaledInstance(250, 150, Image.SCALE_DEFAULT);
+        Image img2=img1.getImage().getScaledInstance(200, 100, Image.SCALE_DEFAULT);
         ImageIcon img3=new ImageIcon(img2);
         JLabel image=new JLabel(img3);
         image.setBounds(200,-50,200,200);

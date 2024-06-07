@@ -23,19 +23,19 @@ public class ViewStudentRecord extends JFrame implements ActionListener  {
     
     try{
     Conn c=new Conn();
-    ResultSet rs=c.s.executeQuery("select * from Student");
+    ResultSet rs=c.s.executeQuery("select * from student");
     
     while(rs.next()){
-    chid.add(rs.getString("emoid"));
+    chid.add(rs.getString("stdid"));
     }
     }catch(Exception e){e.printStackTrace();}
     
     try{
     Conn c=new Conn();
-    ResultSet rs=c.s.executeQuery("select * from Student");
+    ResultSet rs=c.s.executeQuery("select * from student");
     tb.setModel(DbUtils.resultSetToTableModel(rs));
     while(rs.next()){
-    chid.add(rs.getString("emoid"));
+    chid.add(rs.getString("stdid"));
     }
     }catch(Exception e){e.printStackTrace();}
     
@@ -73,7 +73,7 @@ public class ViewStudentRecord extends JFrame implements ActionListener  {
     @Override
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == btnsearch){
-        String query="select * from Student where emoid='"+chid.getSelectedItem()+"'";
+        String query="select * from Student where stdid='"+chid.getSelectedItem()+"'";
         try{
         
         Conn n=new Conn();
